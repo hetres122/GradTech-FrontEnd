@@ -1,0 +1,14 @@
+<button
+  mat-raised-button
+  color="primary"
+  [disabled]="!isValid"
+  type="submit"
+  class="button"
+>
+  <ng-container *ngIf="isLoading; else loginText">
+    <mat-spinner [diameter]="20" color="warn"></mat-spinner>
+  </ng-container>
+  <ng-template #loginText>
+    <ng-content></ng-content>
+  </ng-template>
+</button>

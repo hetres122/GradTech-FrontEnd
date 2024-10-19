@@ -1,0 +1,25 @@
+<form [formGroup]="emailForm" class="form-email">
+  <mat-form-field>
+    <mat-label>{{ 'LabelEmail' | translate }}</mat-label>
+    <input
+      type="email"
+      matInput
+      placeholder="{{ 'Placeholder' | translate }}"
+      formControlName="email"
+    />
+    <app-input-icon
+      matSuffix
+      [isInputValid]="email.valid"
+      [isTouched]="email.touched"
+    >
+    </app-input-icon>
+
+    <mat-error *ngIf="email.hasError('email')">
+      {{ 'InvalidEmail' | translate }}
+    </mat-error>
+    <mat-error *ngIf="email.hasError('required') && email.dirty">
+      {{ 'RequiredEmail' | translate }}
+    </mat-error>
+  </mat-form-field>
+</form>
+

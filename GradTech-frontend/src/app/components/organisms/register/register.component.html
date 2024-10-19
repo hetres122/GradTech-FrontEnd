@@ -1,0 +1,54 @@
+<form class="form" [formGroup]="registerForm" (submit)="onSubmit()">
+  <p *ngIf="isError" class="error">{{ errorMessage | async }}</p>
+
+  <app-email-form></app-email-form>
+
+  <mat-form-field>
+    <mat-label>{{ 'Password' | translate }}</mat-label>
+    <input type="password" matInput formControlName="password"/>
+    <app-input-icon
+      matSuffix
+      [isInputValid]="password.valid"
+      [isTouched]="password.touched">
+    </app-input-icon>
+    <mat-error *ngIf="password.hasError('required') && password.dirty">
+      {{ 'RequiredPassword' | translate }}
+    </mat-error>
+    <mat-error *ngIf="password.hasError('missingUpperCase')">
+      {{ 'MissingUpperCase' | translate }}
+    </mat-error>
+    <mat-error *ngIf="password.hasError('missingLowerCase')">
+      {{ 'MissingLowerCase' | translate }}
+    </mat-error>
+    <mat-error *ngIf="password.hasError('missingDigit')">
+      {{ 'MissingDigit' | translate }}
+    </mat-error>
+    <mat-error *ngIf="password.hasError('minlength')">
+      {{ 'Minlength' | translate }}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'Password' | translate }}</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="confirmPassword"
+    />
+    <app-input-icon
+      matSuffix
+      [isInputValid]="confirmPassword.valid && confirmPassword.dirty "
+      [isTouched]="confirmPassword.touched"
+    >
+    </app-input-icon>
+    <mat-error *ngIf="confirmPassword.hasError('required')">
+      {{ 'RequiredPassword' | translate }}
+    </mat-error>
+    <mat-error *ngIf="confirmPassword.hasError('passwordMismatch') ">
+      {{ 'PasswordMismatch' | translate }}
+    </mat-error>
+  </mat-form-field>
+  <app-button-submit [isLoading]="isLoading" [isValid]="registerForm.valid">
+    {{ 'RegisterButton' | translate }}
+  </app-button-submit>
+</form>

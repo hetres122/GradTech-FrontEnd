@@ -1,0 +1,26 @@
+<form class="form" [formGroup]="loginForm" (submit)="onSubmit()">
+
+  <mat-form-field>
+    <mat-label>{{ 'Password' | translate }}</mat-label>
+    <input type="password" matInput formControlName="password"/>
+    <mat-error *ngIf="password.hasError('required') && password.dirty">
+      {{ 'RequiredPassword' | translate }}
+    </mat-error>
+  </mat-form-field>
+
+  <app-email-form></app-email-form>
+
+  <a routerLink="/reset-password" class="link">{{ 'ResetPassword' | translate }}</a>
+  <div class="box-message">
+    <p *ngIf="showMessage" [ngClass]="{'error': isError, 'success': !isError}">
+      {{ responseMessage | async }}
+    </p>
+  </div>
+  <app-button-submit [isLoading]="isLoading" [isValid]="loginForm.valid">
+    {{ 'LoginButton' | translate }}
+  </app-button-submit>
+</form>
+
+
+
+
