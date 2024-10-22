@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {canActivate} from "@core/Auth/auth.guard";
 
 const routes: Routes = [
   {
@@ -12,20 +11,15 @@ const routes: Routes = [
     path: "reset-password",
     loadComponent: () => import("./pages/password-reset-page/password-reset-page.component").then(c => c.PasswordResetPageComponent),
     title: "Reset Hasła",
-  },{
-    path: "overview",
-    loadComponent: () => import("./pages/overview-page/overview-page.component").then(c => c.OverviewPageComponent),
-    title: "Przegląd",
-    canActivate: [canActivate],
   },
   {
     path: "",
-    redirectTo: "auth",
+    redirectTo: "/overview",
     pathMatch: "full",
   },
   {
     path: "**",
-    redirectTo: "auth",
+    redirectTo: "/overview",
   }
 ];
 

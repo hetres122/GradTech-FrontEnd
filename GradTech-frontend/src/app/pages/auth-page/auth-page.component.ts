@@ -5,6 +5,7 @@ import {MatTabGroup, MatTabsModule} from "@angular/material/tabs";
 import {RegisterComponent, LoginComponent} from "@components/organisms";
 import {UserAuthService} from "@core/services";
 import {Router} from "@angular/router";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   standalone: true,
@@ -14,7 +15,8 @@ import {Router} from "@angular/router";
     MatTabsModule,
     RegisterComponent,
     LoginComponent,
-    TranslateModule
+    TranslateModule,
+    MatCardModule
   ],
   styleUrls: ["./auth-page.component.scss"],
 })

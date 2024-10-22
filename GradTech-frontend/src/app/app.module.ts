@@ -10,6 +10,8 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 import {AppComponent} from "./app.component";
 import {CoreModule} from "@core/core.module";
+import { MainComponent } from './main/main/main.component';
+import {MainRoutingModule} from "./main/main/main-routing.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -17,10 +19,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MainRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
     HttpClientModule,

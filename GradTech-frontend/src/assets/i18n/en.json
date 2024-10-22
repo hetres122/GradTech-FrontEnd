@@ -23,5 +23,6 @@
   "messageErrorEmailExist": "The provided email does not exist",
   "messageErrorSend": "An error occurred during registration",
   "messageSuccessLogin": "You have been logged in: ",
-  "messageErrorLogin": "Invalid login credentials"
+  "messageErrorLogin": "Invalid login credentials",
+  "logout": "Log out"
 }

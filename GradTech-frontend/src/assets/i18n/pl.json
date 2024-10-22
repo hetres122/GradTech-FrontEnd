@@ -23,5 +23,6 @@
   "messageErrorEmailExist": "Podany email nie istnieje",
   "messageErrorSend": "Wystąpił błąd rejestracji",
   "messageSuccessLogin": "Zostałeś zalogowany!",
-  "messageErrorLogin": "Podano nieprawidłowe dane logowania"
+  "messageErrorLogin": "Podano nieprawidłowe dane logowania",
+  "logout": "Wyloguj"
 }
