@@ -21,6 +21,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {ButtonSubmitComponent, InputIconComponent} from "@components/atoms";
 import {EmailFormComponent} from "@components/molecules"
 import {UserAuthService} from "@core/services";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   standalone: true,
@@ -38,6 +39,7 @@ import {UserAuthService} from "@core/services";
     RouterLink,
     ButtonSubmitComponent,
     TranslateModule,
+    MatCardModule,
   ],
   styleUrls: ["./password-reset-page.component.scss"],
 })

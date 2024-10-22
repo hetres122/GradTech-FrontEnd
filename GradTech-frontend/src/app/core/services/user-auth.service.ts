@@ -1,6 +1,6 @@
 import {inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {catchError, map, Observable} from "rxjs";
 
 import {environment} from "@environments/environment";
 import {ApiResponse, LoginRequest, RegisterRequest, ResetPasswordRequest} from "@models/auth-interfaces";
@@ -15,9 +15,9 @@ export class UserAuthService {
   public login(loginRequest: LoginRequest): Observable<ApiResponse> {
     const url = `${this.API_URL}login`;
 
-    const response = this.http.post<ApiResponse>(url, loginRequest);
-    console.log(response);
-    return response
+    return this.http.post<ApiResponse>(url +'?useSessionCookies=true' , loginRequest, {
+      withCredentials: true,
+    });
   }
 
   public register(registerRequest: RegisterRequest): Observable<ApiResponse> {
@@ -30,5 +30,22 @@ export class UserAuthService {
     const url = `${this.API_URL}resetPassword`
 
     return this.http.post<ApiResponse>(url, resetPasswordRequest);
+  }
+
+  public logout(): Observable<ApiResponse> {
+    const url = `${this.API_URL}logout`;
+
+    return this.http.post<ApiResponse>(url, {},{ withCredentials: true });
+  }
+
+  public isAuthenticated(): Observable<boolean> {
+    const url = `${this.API_URL}check-auth`;
+
+    return this.http.get<any>(url, { withCredentials: true }).pipe(
+      map((response) => response.isAuthenticated),
+      catchError(() => {
+        return [false];
+      })
+    );
   }
 }
