@@ -1,10 +1,14 @@
-<div class="wrapper">
-  <mat-tab-group #matTabGroup>
-    <mat-tab label="{{ 'Login' | translate }}">
-      <app-login></app-login>
-    </mat-tab>
-    <mat-tab label="{{ 'Register' | translate }}">
-      <app-register (onChangeToDefaultTab)="changeToLoginTab()"></app-register>
-    </mat-tab>
-  </mat-tab-group>
+<div class="background-wrapper">
+  <mat-card class="content">
+    <div class="wrapper">
+      <mat-tab-group #matTabGroup>
+        <mat-tab label="{{ 'Login' | translate }}">
+          <app-login></app-login>
+        </mat-tab>
+        <mat-tab label="{{ 'Register' | translate }}">
+          <app-register (onChangeToDefaultTab)="changeToLoginTab()"></app-register>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-card>
 </div>

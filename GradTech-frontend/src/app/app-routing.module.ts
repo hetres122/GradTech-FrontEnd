@@ -14,12 +14,12 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "auth",
+    redirectTo: "/overview",
     pathMatch: "full",
   },
   {
     path: "**",
-    redirectTo: "auth",
+    redirectTo: "/overview",
   }
 ];
 

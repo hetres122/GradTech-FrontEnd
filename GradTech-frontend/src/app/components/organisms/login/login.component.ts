@@ -1,5 +1,5 @@
 import {Component, inject, OnInit,} from "@angular/core";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {
   FormBuilder,
@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private userAuthService = inject(UserAuthService);
   private translate = inject(TranslateService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.setLoginFormControls();
@@ -71,6 +72,7 @@ export class LoginComponent implements OnInit {
       next: () => {
         this.isError = false;
         this.responseMessage = this.translate.get("messageSuccessLogin");
+        this.router.navigate(["/overview"]);
       },
       error: () => {
         this.isError = true;
