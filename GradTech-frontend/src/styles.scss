@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 .wrapper {
   width: 100%;
   height: auto;
@@ -15,22 +16,26 @@ body {
   margin: auto;
   padding-top: 20px;
 }
+
 @media (min-width: 733px) {
   .wrapper {
     width: 40%;
   }
 }
+
 @media (min-width: 1000px) {
   .wrapper {
     width: 30%;
   }
 }
+
 .form {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   padding: 20px;
 }
+
 .success {
   color: green;
 }
@@ -66,3 +71,21 @@ body {
     width: 80%;
   }
 }
+
+.page-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background: #eee;
+}
+
+.page-wrapper {
+  background-color: #fff;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  border-radius: 4px;
+  padding: 16px;
+}
+

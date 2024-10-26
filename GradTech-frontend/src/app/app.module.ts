@@ -12,6 +12,7 @@ import {AppComponent} from "./app.component";
 import {CoreModule} from "@core/core.module";
 import { MainComponent } from './main/main/main.component';
 import {MainRoutingModule} from "./main/main/main-routing.module";
+import {NavigationDrawerComponent} from "./main/navigation-drawer/navigation-drawer.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    NavigationDrawerComponent,
   ],
   bootstrap: [AppComponent]
 })

@@ -24,5 +24,8 @@
   "messageErrorSend": "Wystąpił błąd rejestracji",
   "messageSuccessLogin": "Zostałeś zalogowany!",
   "messageErrorLogin": "Podano nieprawidłowe dane logowania",
-  "logout": "Wyloguj"
+  "logout": "Wyloguj",
+  "overview": "Przegląd",
+  "units": "Pojazdy",
+  "reservation": "Rezerwacja"
 }

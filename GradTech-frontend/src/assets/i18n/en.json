@@ -24,5 +24,8 @@
   "messageErrorSend": "An error occurred during registration",
   "messageSuccessLogin": "You have been logged in: ",
   "messageErrorLogin": "Invalid login credentials",
-  "logout": "Log out"
+  "logout": "Log out",
+  "overview": "Overview",
+  "units": "Vehicles",
+  "reservation": "Reservation"
 }

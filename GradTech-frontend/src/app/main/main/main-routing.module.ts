@@ -13,16 +13,16 @@ const routes: Routes = [
         path: "overview",
         loadComponent: () => import("@pages/overview-page/overview-page.component").then(c => c.OverviewPageComponent),
         title: "Przegląd",
-        canActivate: [canActivate],
       },
+      {
+        path: "units",
+        loadComponent: () => import("@pages/units-page/units-page.component").then(c => c.UnitsPageComponent),
+        title: "Pojazdy",
+        },
       {
         path: "",
         redirectTo: "overview",
         pathMatch: "full",
-      },
-      {
-        path: "**",
-        redirectTo: "overview",
       }
     ]
   },

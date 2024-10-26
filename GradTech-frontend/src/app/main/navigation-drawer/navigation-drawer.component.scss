@@ -1,0 +1,30 @@
+.example-container {
+  width: auto;
+  height: 100%;
+  background: #eee;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 64px);
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 100%;
+  padding: 8px;
+}
+
+.link-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
