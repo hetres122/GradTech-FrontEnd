@@ -27,5 +27,9 @@
   "logout": "Log out",
   "overview": "Overview",
   "units": "Vehicles",
-  "reservation": "Reservation"
+  "reservation": "Reservation",
+  "unit.no": "No.",
+  "unit.make": "Make",
+  "unit.model": "Model",
+  "unit.dailyRate": "Daily rate",
 }

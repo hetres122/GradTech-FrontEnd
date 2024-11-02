@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.scrollable-table {
+  width: 100%;
+  overflow-y: auto;
+  max-height: 90vh;
+}

@@ -27,5 +27,14 @@
   "logout": "Wyloguj",
   "overview": "Przegląd",
   "units": "Pojazdy",
-  "reservation": "Rezerwacja"
+  "reservation": "Rezerwacja",
+  "unit.no": "Nr",
+  "unit.make": "Marka",
+  "unit.model": "Model",
+  "unit.dailyRate": "Dzienna stawka",
+  "unit.units": "Pojazdy",
+  "unit.addUnit": "Dodaj pojazd",
+  "unit.actions": "Akcje",
+  "unit.edit": "Edytuj",
+  "unit.delete": "Usuń"
 }
