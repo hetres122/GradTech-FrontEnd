@@ -12,3 +12,9 @@ th.mat-sort-header-sorted {
   overflow-y: auto;
   max-height: 90vh;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}

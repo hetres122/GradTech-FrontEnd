@@ -18,7 +18,17 @@ const routes: Routes = [
         path: "units",
         loadComponent: () => import("@pages/units-page/units-page.component").then(c => c.UnitsPageComponent),
         title: "Pojazdy",
-        },
+      },
+      {
+        path: "units/add",
+        loadComponent: () => import("@pages/unit-add-page/unit-add-page.component").then(c => c.UnitAddPageComponent),
+        title: "Dodaj pojazd",
+      },
+      {
+        path: "units/:unitId",
+        loadComponent: () => import("@pages/unit-add-page/unit-add-page.component").then(c => c.UnitAddPageComponent),
+        title: "Edytuj pojazd",
+      },
       {
         path: "",
         redirectTo: "overview",
@@ -28,9 +38,9 @@ const routes: Routes = [
   },
 ];
 
-    @NgModule({
-      imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload'})],
-      exports: [RouterModule],
-    })
-    export class MainRoutingModule {
-    }
+@NgModule({
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  exports: [RouterModule],
+})
+export class MainRoutingModule {
+}

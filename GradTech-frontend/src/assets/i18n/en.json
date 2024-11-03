@@ -32,4 +32,15 @@
   "unit.make": "Make",
   "unit.model": "Model",
   "unit.dailyRate": "Daily rate",
+  "unit.units": "Vehicles",
+  "unit.addUnit": "Add vehicle",
+  "unit.actions": "Actions",
+  "unit.edit": "Edit",
+  "unit.delete": "Delete",
+  "unit.year": "Year",
+  "unit.add": "Add",
+  "unit.dailyRateRequired": "Daily rate is required",
+  "unit.makeRequired": "Make is required",
+  "unit.modelRequired": "Model is required",
+  "unit.yearRequired": "Year is required"
 }

@@ -4,7 +4,7 @@
       <h1>{{ 'unit.units' | translate }}</h1>
     </div>
 
-    <div class="page-content">
+    <div class="button-container">
       <button mat-raised-button color="primary" [routerLink]="['/units/add']">
         {{ 'unit.addUnit' | translate }}
       </button>
@@ -32,6 +32,13 @@
           {{ 'unit.model' | translate }}
         </th>
         <td mat-cell *matCellDef="let element"> {{ element.model }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by year">
+          {{ 'unit.year' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element.year }}</td>
       </ng-container>
 
       <ng-container matColumnDef="dailyRate">

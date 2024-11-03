@@ -27,7 +27,7 @@ export class UnitService {
   }
 
   public getUnit(unitId: number): Observable<UnitElement> {
-    const url = `${this.API_URL}api/Unit?unitid=${unitId}`;
+    const url = `${this.API_URL}api/Unit/${unitId}`;
 
     return this.http.get<UnitElement>(url, {
       withCredentials: true,
@@ -43,7 +43,7 @@ export class UnitService {
   }
 
   public updateUnit(unit: UnitElement): Observable<UnitElement> {
-    const url = `${this.API_URL}api/Unit?unitid=${unit.unitId}`;
+    const url = `${this.API_URL}api/Unit`;
 
     return this.http.put<UnitElement>(url, unit, {
       withCredentials: true,

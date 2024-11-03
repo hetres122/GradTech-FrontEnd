@@ -36,5 +36,11 @@
   "unit.addUnit": "Dodaj pojazd",
   "unit.actions": "Akcje",
   "unit.edit": "Edytuj",
-  "unit.delete": "Usuń"
+  "unit.delete": "Usuń",
+  "unit.year": "Rok",
+  "unit.add": "Dodaj",
+  "unit.dailyRateRequired": "Dzienna stawka jest wymagana",
+  "unit.makeRequired": "Marka jest wymagana",
+  "unit.modelRequired": "Model jest wymagany",
+  "unit.yearRequired": "Rok jest wymagany"
 }

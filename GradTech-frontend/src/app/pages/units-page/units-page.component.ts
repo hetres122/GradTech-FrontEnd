@@ -5,7 +5,7 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {UnitService} from "@core/services";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatIconModule} from "@angular/material/icon";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {UnitElement} from "@models/unit";
@@ -26,11 +26,12 @@ import {UnitElement} from "@models/unit";
   standalone: true
 })
 export class UnitsPageComponent implements OnInit {
-  public displayedColumns: string[] = ['unitId', 'make', 'model', 'dailyRate', 'actions'];
+  public displayedColumns: string[] = ['unitId', 'make', 'model', 'year', 'dailyRate', 'actions'];
   public dataSource!: MatTableDataSource<UnitElement>;
 
   private liveAnnouncer = inject(LiveAnnouncer);
   private unitService = inject(UnitService);
+  private router = inject(Router);
 
   @ViewChild(MatSort, {static: false}) sort!: MatSort;
 
@@ -51,7 +52,7 @@ export class UnitsPageComponent implements OnInit {
   }
 
   public editUnit(element: UnitElement) {
-    console.log('Edycja jednostki:', element);
+    this.router.navigate(['units', element.unitId]);
   }
 
   public deleteUnit(element: UnitElement) {
