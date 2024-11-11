@@ -1,0 +1,47 @@
+<div class="page-container">
+  <div class="page-wrapper">
+    <div class="page-header">
+      <h1>{{ 'unit.addUnit' | translate }}</h1>
+    </div>
+
+    <div>
+      <form class="page-content" [formGroup]="unitForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="{{ 'unit.make' | translate }}" formControlName="make">
+          <mat-error *ngIf="unitForm.get('make')?.hasError('required')">
+            {{ 'unit.makeRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="{{ 'unit.model' | translate }}" formControlName="model">
+          <mat-error *ngIf="unitForm.get('model')?.hasError('required')">
+            {{ 'unit.modelRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="{{ 'unit.year' | translate }}" formControlName="year">
+          <mat-error *ngIf="unitForm.get('year')?.hasError('required')">
+            {{ 'unit.yearRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="{{ 'unit.dailyRate' | translate }}" formControlName="dailyRate">
+          <mat-error *ngIf="unitForm.get('dailyRate')?.hasError('required')">
+            {{ 'unit.dailyRateRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" *ngIf="!isEdit">
+          {{ 'unit.add' | translate }}
+        </button>
+
+        <button mat-raised-button color="primary" type="submit" *ngIf="isEdit">
+          {{ 'unit.edit' | translate }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
