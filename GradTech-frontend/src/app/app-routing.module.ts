@@ -17,10 +17,6 @@ const routes: Routes = [
     redirectTo: "/overview",
     pathMatch: "full",
   },
-  {
-    path: "**",
-    redirectTo: "/overview",
-  }
 ];
 
 @NgModule({

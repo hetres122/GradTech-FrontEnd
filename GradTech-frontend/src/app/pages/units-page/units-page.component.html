@@ -1,62 +1,65 @@
 <div class="page-container">
   <div class="page-wrapper">
     <div class="page-header">
-      <h1>{{ 'reservation.myReservation' | translate }}</h1>
+      <h1>{{ 'unit.units' | translate }}</h1>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" [routerLink]="['/units/add']">
+        {{ 'unit.addUnit' | translate }}
+      </button>
     </div>
 
     <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
            class="mat-elevation-z8 scrollable-table">
 
-      <ng-container matColumnDef="reservationId">
+      <ng-container matColumnDef="unitId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-          {{ 'reservation.reservationId' | translate }}
+          {{ 'unit.no' | translate }}
         </th>
-        <td mat-cell *matCellDef="let element"> {{ element.reservationId }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="startDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
-          {{ 'reservation.startDate' | translate }}
-        </th>
-        <td mat-cell *matCellDef="let element"> {{ element.startDate | date: 'dd.MM.yyyy' }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="endDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
-          {{ 'reservation.endDate' | translate }}
-        </th>
-        <td mat-cell *matCellDef="let element"> {{ element.endDate | date: 'dd.MM.yyyy' }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.unitId }}</td>
       </ng-container>
 
       <ng-container matColumnDef="make">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by year">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
           {{ 'unit.make' | translate }}
         </th>
         <td mat-cell *matCellDef="let element"> {{ element.make }}</td>
       </ng-container>
 
       <ng-container matColumnDef="model">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by year">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
           {{ 'unit.model' | translate }}
         </th>
         <td mat-cell *matCellDef="let element"> {{ element.model }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="totalAmount">
+      <ng-container matColumnDef="year">
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by year">
-          {{ 'reservation.totalAmount' | translate }}
+          {{ 'unit.year' | translate }}
         </th>
-        <td mat-cell *matCellDef="let element"> {{ element.totalAmount }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.year }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dailyRate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+          {{ 'unit.dailyRate' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element.dailyRate }}</td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> {{ 'actions' | translate }}</th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'unit.actions' | translate }} </th>
         <td mat-cell *matCellDef="let element">
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="deleteReservation(element)">
+            <button mat-menu-item (click)="editUnit(element)">
+              <mat-icon>edit</mat-icon>
+              <span>{{ 'unit.edit' | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="deleteUnit(element)">
               <mat-icon>delete</mat-icon>
               <span>{{ 'unit.delete' | translate }}</span>
             </button>
