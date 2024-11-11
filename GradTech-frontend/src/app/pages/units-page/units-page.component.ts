@@ -40,7 +40,6 @@ export class UnitsPageComponent implements OnInit {
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.sort = this.sort;
     });
-
   }
 
   announceSortChange(sortState: Sort) {

@@ -1,0 +1,33 @@
+<div class="page-container">
+  <div class="page-wrapper">
+    <div class="page-header">
+      <h1>{{ 'additionalOption.addAdditionalOption' | translate }}</h1>
+    </div>
+
+    <div>
+      <form class="page-content" [formGroup]="additionalOptionForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="{{ 'additionalOption.optionName' | translate }}" formControlName="optionName">
+          <mat-error *ngIf="additionalOptionForm.get('optionName')?.hasError('required')">
+            {{ 'additionalOption.optionNameRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="{{ 'additionalOption.price' | translate }}" formControlName="price">
+          <mat-error *ngIf="additionalOptionForm.get('price')?.hasError('required')">
+            {{ 'additionalOption.priceRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" *ngIf="!isEdit">
+          {{ 'additionalOption.add' | translate }}
+        </button>
+
+        <button mat-raised-button color="primary" type="submit" *ngIf="isEdit">
+          {{ 'additionalOption.edit' | translate }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

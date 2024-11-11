@@ -1,0 +1,132 @@
+<div class="page-container">
+  <div class="page-wrapper">
+    <div class="page-header">
+      <h1>{{ 'reservation.addReservation' | translate }}</h1>
+    </div>
+
+    <mat-stepper linear #stepper>
+      <mat-step [stepControl]="dateRangeForm">
+        <form [formGroup]="dateRangeForm">
+          <ng-template matStepLabel>{{ 'reservation.setDate' | translate }}</ng-template>
+          <mat-form-field>
+            <mat-label>{{ 'reservation.setDate' | translate }}</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="startDate" placeholder="Start date">
+              <input matEndDate formControlName="endDate" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="startDate?.hasError('required')">
+              {{ 'reservation.startDateRequired' | translate }}
+            </mat-error>
+            <mat-error *ngIf="endDate?.hasError('required')">
+              {{ 'reservation.endDateRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperNext>{{ 'next' | translate }}</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>{{ 'reservation.setUnit' | translate }}</ng-template>
+
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+               class="mat-elevation-z8 scrollable-table">
+
+          <ng-container matColumnDef="unitId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+              {{ 'unit.no' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.unitId }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="make">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+              {{ 'unit.make' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.make }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+              {{ 'unit.model' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.model }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="year">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by year">
+              {{ 'unit.year' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.year }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="dailyRate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+              {{ 'unit.dailyRate' | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.dailyRate }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> {{ 'unit.addReservation' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-checkbox [(ngModel)]="element.selected" (change)="onCheckboxChange(element)">
+                {{ 'unit.addUnit' | translate }}
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <div>
+          <button mat-button matStepperPrevious>{{ 'back' | translate }}</button>
+          <button mat-button matStepperNext>{{ 'next' | translate }}</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>{{ 'reservation.additionalOptions' | translate }}</ng-template>
+
+        <form [formGroup]="optionsForm">
+          <h3>{{'reservation.addAdditionalOptions' | translate}}</h3>
+          <div *ngFor="let option of additionalOptions; let i = index">
+            <label>
+              <input type="checkbox" [formControl]="selectedOptions.controls[i]">
+              {{ option.optionName }} (Cena: {{ option.price | currency:'PLN' }})
+            </label>
+          </div>
+        </form>
+
+        <div>
+          <button mat-button matStepperPrevious>{{ 'back' | translate }}</button>
+          <button mat-button matStepperNext>{{ 'next' | translate }}</button>
+        </div>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>{{ 'reservation.summary' | translate }}</ng-template>
+        <h3>{{ 'reservation.dateRange' | translate }}</h3>
+        <p>{{ 'reservation.from' | translate }}: {{ startDate.value | date }} {{ 'reservation.to' | translate }}
+          : {{ endDate.value | date }}</p>
+        <h3>{{ 'reservation.units' | translate }}</h3>
+        <ul>
+          <li *ngFor="let unit of selectedItems">{{ unit.make }} {{ unit.model }} {{ unit.year }}</li>
+        </ul>
+        <h3>{{ 'reservation.summary' | translate }}</h3>
+        <p>{{ 'reservation.total' | translate }}: {{ total | currency }}</p>
+
+        <div>
+          <button mat-button matStepperPrevious>{{ 'back' | translate }}</button>
+          <button mat-button (click)="submitReservation()">{{ 'reservation.submit' | translate }}</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+
+  </div>
+</div>

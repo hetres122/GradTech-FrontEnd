@@ -1,0 +1,60 @@
+<div class="page-container">
+  <div class="page-wrapper">
+    <div class="page-header">
+      <h1>{{ 'additionalOption.additionalOption' | translate }}</h1>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" [routerLink]="['/additional-option/add']">
+        {{ 'additionalOption.addAdditionalOption' | translate }}
+      </button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+           class="mat-elevation-z8 scrollable-table">
+
+      <ng-container matColumnDef="additionalOptionId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+          {{ 'additionalOption.additionalOptionId' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element.additionalOptionId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="optionName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+          {{ 'additionalOption.optionName' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element.optionName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+          {{ 'additionalOption.price' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element.price}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> {{ 'actions' | translate }} </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editAdditionalOption(element)">
+              <mat-icon>edit</mat-icon>
+              <span>{{ 'additionalOption.edit' | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="deleteAdditionalOption(element)">
+              <mat-icon>delete</mat-icon>
+              <span>{{ 'additionalOption.delete' | translate }}</span>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

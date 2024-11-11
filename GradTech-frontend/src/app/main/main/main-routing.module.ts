@@ -30,6 +30,26 @@ const routes: Routes = [
         title: "Edytuj pojazd",
       },
       {
+        path: "reservation",
+        loadComponent: () => import("@pages/reservation-page/reservation-page.component").then(c => c.ReservationPageComponent),
+        title: "Rezerwacje",
+      },
+      {
+        path: "additional-option",
+        loadComponent: () => import("@pages/additional-option/additional-option.component").then(c => c.AdditionalOptionComponent),
+        title: "Dodatkowe opcje",
+      },
+      {
+        path: "additional-option/add",
+        loadComponent: () => import("@pages/additional-option-add-page/additional-option-add-page.component").then(c => c.AdditionalOptionAddPageComponent),
+        title: "Dodaj dodatkową opcję",
+      },
+      {
+        path: "additional-option/:additionalOptionId",
+        loadComponent: () => import("@pages/additional-option-add-page/additional-option-add-page.component").then(c => c.AdditionalOptionAddPageComponent),
+        title: "Edytuj dodatkową opcję",
+      },
+      {
         path: "",
         redirectTo: "overview",
         pathMatch: "full",

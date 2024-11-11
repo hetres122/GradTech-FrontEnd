@@ -49,4 +49,12 @@ export class UnitService {
       withCredentials: true,
     });
   }
+
+  public getAvailableUnits(startDate: string, endDate: string): Observable<UnitElement[]> {
+    const url = `${this.API_URL}api/Unit/available?startDate=${startDate}&endDate=${endDate}`;
+
+    return this.http.get<UnitElement[]>(url, {
+      withCredentials: true,
+    });
+  }
 }
