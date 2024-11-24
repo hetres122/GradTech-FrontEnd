@@ -4,9 +4,6 @@ import {catchError, map, Observable} from "rxjs";
 
 import {environment} from "@environments/environment";
 import {ApiResponse, LoginRequest, RegisterRequest, ResetPasswordRequest} from "@models/auth-interfaces";
-import { CookieService } from "ngx-cookie-service";
-import { jwtDecode } from 'jwt-decode';
-
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +11,6 @@ import { jwtDecode } from 'jwt-decode';
 export class UserAuthService {
   private http = inject(HttpClient);
   private readonly API_URL: URL = new URL(environment.apiUrl);
-  private cookieService = inject(CookieService);
 
   public login(loginRequest: LoginRequest): Observable<ApiResponse> {
     const url = `${this.API_URL}login`;
@@ -53,20 +49,9 @@ export class UserAuthService {
     );
   }
 
- public getRolesFromSession(): string[] {
-    const token = this.cookieService.get('.AspNetCore.Identity.Application');
-    console.log(token);
-    return this.getRolesFromToken(token);
-  }
+  public getUserRoles(): Observable<string[]> {
+    const url = `${this.API_URL}roles`;
 
-  private getRolesFromToken(token: string): string[] {
-    try {
-      const decoded: any = jwtDecode(token);
-      console.log(decoded);
-      return decoded.roles || [];
-    } catch (error) {
-      console.error("Error decoding JWT token:", error);
-      return [];
-    }
+    return this.http.get<string[]>(url, { withCredentials: true });
   }
 }
